@@ -1,0 +1,144 @@
+/* Definição de variáveis globais */
+:root {
+    --bg-color: #0d1117;     
+    --text-color: #c9d1d9;   
+    --accent-color: #58a6ff; 
+    --card-bg: #161b22;     
+}
+
+/* Configurações básicas do corpo da página*/
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Container para centralizar o conteúdo e limitar a largura máxima*/
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilo padronizado para os títulos das seções */
+h1, h2, h3 {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-wave {
+    width: 100%;
+    display: block;
+}
+
+/* Estilo da imagem de animação de digitação */
+.typing-animation {
+    margin: 20px 0;
+    max-width: 100%;
+}
+
+/* Estilização das caixas de conteúdo (seções): bordas arredondadas e sombra */
+section {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* Layout flexível para a introdução: coloca texto e imagem lado a lado */
+.intro-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.intro-text {
+    flex: 2; 
+    text-align: left;
+}
+
+.intro-text h1 {
+    text-align: left; 
+}
+
+/* Estilo da imagem do cubo mágico*/
+.intro-cube {
+    flex: 1;
+    max-width: 250px;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(88, 166, 255, 0.3));
+}
+
+/* Configuração da lista de itens pessoais */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* Classe utilitária para centralizar elementos em grupo usando Flexbox */
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Configuração dos ícones de habilidades: tamanho e transição de movimento */
+.skills-icon {
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito de aumento (zoom) ao passar o mouse sobre os ícones */
+.skills-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Estilização específica para os cartões de Soft Skills */
+.skill-card {
+    background-color: #1c2128;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card p {
+    font-size: 0.9rem;
+    color: #8b949e; 
+}
+
+footer {
+    text-align: center;
+    padding-bottom: 40px;
+}

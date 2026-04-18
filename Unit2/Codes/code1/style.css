@@ -1,0 +1,103 @@
+/* =========================================================
+   ARQUIVO CSS - RESPONSÁVEL PELO VISUAL E ESTILO DA PÁGINA
+   ========================================================= */
+
+body {
+  /* Define a família de fontes do site. Se o computador não tiver Arial, usa a próxima sans-serif disponível */
+  font-family: Arial, sans-serif;
+  
+  /* Define a cor de fundo de toda a página (neste caso, um cinza bem clarinho) */
+  background-color: #93eaa6;
+  
+  /* Cria um espaço de 20 pixels em todos os lados (cima, baixo, esquerda, direita) fora do conteúdo */
+  margin: 20px;
+}
+
+h1 {
+  /* Define a cor do texto de todas as tags <h1> para um cinza escuro */
+  color: #333;
+}
+
+.container {
+  /* Define a largura máxima que este elemento pode ter. Se a tela for maior que 800px, ele trava nesse tamanho */
+  max-width: 800px;
+  
+  /* O '0' tira a margem de cima e de baixo. O 'auto' calcula o espaço igual nas laterais, centralizando a caixa na tela */
+  margin: 0 auto;
+  
+  /* Cria um espaço interno de 20 pixels, afastando o conteúdo das bordas do container */
+  padding: 20px;
+}
+
+.main-title {
+  /* Cor do texto: cinza escuro */
+  color: #333;
+  
+  /* Aumenta o tamanho da fonte (2em equivale ao dobro do tamanho normal da fonte base) */
+  font-size: 2em;
+  
+  /* Cria um espaço de 20 pixels abaixo deste título, empurrando o conteúdo que vem depois para baixo */
+  margin-bottom: 20px;
+}
+
+.section-title {
+  /* Cor do texto: um cinza médio */
+  color: #555;
+  
+  /* Tamanho da fonte 1.5 vezes maior que o texto normal */
+  font-size: 1.5em;
+  
+  /* Cria um espaço de 20 pixels acima do subtítulo */
+  margin-top: 20px;
+  
+  /* Cria um espaço de 10 pixels abaixo do subtítulo */
+  margin-bottom: 10px;
+
+  align-items: center;
+}
+
+.description {
+  /* Cor do texto: cinza um pouco mais claro */
+  color: #666;
+  
+  /* Define a altura da linha (espaçamento entre as linhas do texto). 1.6 deixa a leitura mais confortável */
+  line-height: 1.6;
+
+  align-items: center;
+}
+
+.item-list {
+  /* Muda a bolinha padrão da lista para um círculo vazado */
+  list-style-type: circle;
+  
+  /* Afasta a lista 20 pixels da margem esquerda */
+  align-items: center;
+}
+
+.external-link {
+  /* Cor do texto do link: um tom de azul (#0066cc) */
+  color: #0066cc;
+  
+  /* Remove o sublinhado padrão que todo link tem no navegador */
+  text-decoration: none;
+  
+  /* Deixa a fonte em negrito (mais grossa) */
+  font-weight: bold;
+}
+
+/* O ':hover' é um pseudo-estado. Esses estilos só são ativados quando o mouse passa por cima do link */
+.external-link:hover {
+  /* Quando passar o mouse, o sublinhado volta a aparecer */
+  text-decoration: underline;
+}
+
+.illustration {
+  /* A imagem nunca vai ultrapassar 100% da largura da caixa onde ela está. Isso deixa a imagem responsiva (não quebra no celular) */
+  max-width: 100%;
+  
+  /* A altura se ajusta automaticamente para manter a proporção da imagem, não deixando ela esticada ou achatada */
+  height: auto;
+  
+  /* Dá um espaço de 20 pixels acima da imagem */
+  margin-top: 20px;
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poké-Sound System: Festival Musical</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Festival Musical Pokémon</h1>
+        <p>Toque nas notas ou escute a performance de cada integrante da banda!</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="sound-board">
+            <button class="note-pad note-do" onclick="playSynthNote(261.63, 0)">C (Dó)</button>
+            <button class="note-pad note-re" onclick="playSynthNote(293.66, 1)">D (Ré)</button>
+            <button class="note-pad note-mi" onclick="playSynthNote(329.63, 2)">E (Mi)</button>
+            <button class="note-pad note-fa" onclick="playSynthNote(349.23, 3)">F (Fá)</button>
+            <button class="note-pad note-sol" onclick="playSynthNote(392.00, 4)">G (Sol)</button>
+            <button class="note-pad note-la" onclick="playSynthNote(440.00, 5)">A (Lá)</button>
+            <button class="note-pad note-si" onclick="playSynthNote(493.88, 6)">B (Si)</button>
+        </div>
+
+        <div class="visualizer-box" id="visualizer">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <div class="pokemon-section">
+            
+            <div class="poke-card noivern">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/715.png" alt="Noivern" class="poke-image">
+                <h3 style="color: var(--noivern-teal)">Noivern</h3>
+                <p>Ondas Ultrassônicas</p>
+                <audio id="audio-noivern" src="https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/715.ogg"></audio>
+                <button class="cry-button btn-noivern" onclick="playPokemonCry('audio-noivern', 'var(--noivern-teal)')">🔊 Boomburst</button>
+            </div>
+
+            <div class="poke-card exploud">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/295.png" alt="Exploud" class="poke-image">
+                <h3 style="color: var(--exploud-yellow)">Exploud</h3>
+                <p>O Peso Pesado do Grave</p>
+                <audio id="audio-exploud" src="https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/295.ogg"></audio>
+                <button class="cry-button btn-exploud" onclick="playPokemonCry('audio-exploud', 'var(--exploud-yellow)')">🔊 Rugido Ecoante</button>
+            </div>
+
+            <div class="poke-card chatot">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/441.png" alt="Chatot" class="poke-image">
+                <h3 style="color: var(--chatot-green)">Chatot</h3>
+                <p>O Metrônomo Tagarela</p>
+                <audio id="audio-chatot" src="https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/441.ogg"></audio>
+                <button class="cry-button btn-chatot" onclick="playPokemonCry('audio-chatot', 'var(--chatot-green)')">🔊 Chatter</button>
+            </div>
+
+            <div class="poke-card kricketune">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/402.png" alt="Kricketune" class="poke-image">
+                <h3 style="color: var(--kricketune-red)">Kricketune</h3>
+                <p>O Mestre do Violino</p>
+                <audio id="audio-kricketune" src="https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/402.ogg"></audio>
+                <button class="cry-button btn-kricketune" onclick="playPokemonCry('audio-kricketune', 'var(--kricketune-red)')">🔊 Delelele Woooop!</button>
+            </div>
+
+            <div class="poke-card toxtricity">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/849.png" alt="Toxtricity" class="poke-image">
+                <h3 style="color: var(--toxtricity-purple)">Toxtricity</h3>
+                <p>O Guitarrista Punk-Rock</p>
+                <audio id="audio-toxtricity" src="https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/849.ogg"></audio>
+                <button class="cry-button btn-toxtricity" onclick="playPokemonCry('audio-toxtricity', 'var(--toxtricity-purple)')">🔊 Overdrive</button>
+            </div>
+
+            <div class="poke-card primarina">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/730.png" alt="Primarina" class="poke-image">
+                <h3 style="color: var(--primarina-cyan)">Primarina</h3>
+                <p>A Cantora de Ópera</p>
+                <audio id="audio-primarina" src="https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/730.ogg"></audio>
+                <button class="cry-button btn-primarina" onclick="playPokemonCry('audio-primarina', 'var(--primarina-cyan)')">🔊 Sparkling Aria</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const bars = document.querySelectorAll('.bar');
+
+        function playSynthNote(frequency, index) {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+
+            oscillator.type = 'sawtooth'; 
+            oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+            
+            gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.6);
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.6);
+
+            animateSingleBar(index, 'white');
+        }
+
+        function playPokemonCry(audioElementId, color) {
+            const audio = document.getElementById(audioElementId);
+            
+            audio.pause();
+            audio.currentTime = 0;
+            audio.volume = 0.6;
+            audio.play();
+
+            animateAllBars(color, 1500);
+        }
+
+        function animateSingleBar(index, color) {
+            const bar = bars[index];
+            bar.style.height = "90%";
+            bar.style.backgroundColor = color;
+            
+            setTimeout(() => {
+                bar.style.height = "10%";
+                bar.style.backgroundColor = "var(--primarina-cyan)";
+            }, 300);
+        }
+
+        let animationInterval;
+        function animateAllBars(color, duration) {
+            clearInterval(animationInterval); 
+            
+            let timeElapsed = 0;
+            const updateRate = 100; 
+            
+            animationInterval = setInterval(() => {
+                bars.forEach(bar => {
+                    const randomHeight = Math.floor(Math.random() * 70) + 30; 
+                    bar.style.height = randomHeight + "%";
+                    bar.style.backgroundColor = color;
+                });
+                
+                timeElapsed += updateRate;
+                if (timeElapsed >= duration) {
+                    clearInterval(animationInterval);
+                    resetBars();
+                }
+            }, updateRate);
+        }
+
+        function resetBars() {
+            bars.forEach(bar => {
+                bar.style.height = "10%";
+                bar.style.backgroundColor = "var(--primarina-cyan)";
+            });
+        }
+    </script>
+</body>
+</html>
