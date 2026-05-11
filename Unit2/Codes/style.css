@@ -1,5 +1,5 @@
 :root {
-    /* Cores dos Pokémon */
+    /* Cores dos Pokémon Originais */
     --noivern-purple: #4B2B5E;
     --noivern-teal: #48D1CC;
     --exploud-blue: #7FB3D5;
@@ -8,6 +8,12 @@
     --kricketune-red: #E74C3C;
     --toxtricity-purple: #9B59B6;
     --primarina-cyan: #00BFFF;
+
+    /* Cores dos Novos Pokémon Musicais */
+    --jigglypuff-pink: #ff99cc;
+    --meloetta-green: #98fb98;
+    --rillaboom-green: #3cb371;
+    --skeledirge-orange: #ff4500;
     
     --bg-dark: #121212;
 }
@@ -145,6 +151,12 @@ h1 {
 .toxtricity { border: 3px solid var(--toxtricity-purple); }
 .primarina { border: 3px solid var(--primarina-cyan); }
 
+/* Bordas dos novos Pokémon */
+.jigglypuff { border: 3px solid var(--jigglypuff-pink); }
+.meloetta { border: 3px solid var(--meloetta-green); }
+.rillaboom { border: 3px solid var(--rillaboom-green); }
+.skeledirge { border: 3px solid var(--skeledirge-orange); }
+
 .poke-image {
     width: 140px;
     height: 140px;
@@ -183,5 +195,11 @@ h1 {
 .btn-kricketune { background-color: var(--kricketune-red); }
 .btn-toxtricity { background-color: var(--toxtricity-purple); }
 .btn-primarina { background-color: var(--primarina-cyan); color: black; }
+
+/* Botões dos novos Pokémon */
+.btn-jigglypuff { background-color: var(--jigglypuff-pink); color: black; }
+.btn-meloetta { background-color: var(--meloetta-green); color: black; }
+.btn-rillaboom { background-color: var(--rillaboom-green); color: white; }
+.btn-skeledirge { background-color: var(--skeledirge-orange); color: white; }
 
 .cry-button:hover { filter: brightness(1.2); box-shadow: 0 0 10px rgba(255,255,255,0.3); }

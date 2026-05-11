@@ -85,6 +85,38 @@
                 <button class="cry-button btn-primarina" onclick="playPokemonCry('audio-primarina', 'var(--primarina-cyan)')">🔊 Sparkling Aria</button>
             </div>
 
+            <div class="poke-card jigglypuff">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png" alt="Jigglypuff" class="poke-image">
+                <h3 style="color: #ff99cc">Jigglypuff</h3>
+                <p>A Cantora de Ninar</p>
+                <audio id="audio-jigglypuff" src="https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/39.ogg"></audio>
+                <button class="cry-button btn-jigglypuff" onclick="playPokemonCry('audio-jigglypuff', '#ff99cc')">🔊 Sing</button>
+            </div>
+
+            <div class="poke-card meloetta">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/648.png" alt="Meloetta" class="poke-image">
+                <h3 style="color: #98fb98">Meloetta</h3>
+                <p>A Deusa das Melodias</p>
+                <audio id="audio-meloetta" src="https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/648.ogg"></audio>
+                <button class="cry-button btn-meloetta" onclick="playPokemonCry('audio-meloetta', '#98fb98')">🔊 Relic Song</button>
+            </div>
+
+            <div class="poke-card rillaboom">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/812.png" alt="Rillaboom" class="poke-image">
+                <h3 style="color: #3cb371">Rillaboom</h3>
+                <p>O Baterista da Selva</p>
+                <audio id="audio-rillaboom" src="https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/812.ogg"></audio>
+                <button class="cry-button btn-rillaboom" onclick="playPokemonCry('audio-rillaboom', '#3cb371')">🔊 Drum Beating</button>
+            </div>
+
+            <div class="poke-card skeledirge">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1011.png" alt="Skeledirge" class="poke-image">
+                <h3 style="color: #ff4500">Skeledirge</h3>
+                <p>O Cantor de Fogo</p>
+                <audio id="audio-skeledirge" src="https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/1011.ogg"></audio>
+                <button class="cry-button btn-skeledirge" onclick="playPokemonCry('audio-skeledirge', '#ff4500')">🔊 Torch Song</button>
+            </div>
+
         </div>
     </div>
 
@@ -133,7 +165,7 @@
             
             setTimeout(() => {
                 bar.style.height = "10%";
-                bar.style.backgroundColor = "var(--primarina-cyan)";
+                bar.style.backgroundColor = "var(--primarina-cyan)"; // Cor padrão das barras em repouso
             }, 300);
         }
 
@@ -162,7 +194,7 @@
         function resetBars() {
             bars.forEach(bar => {
                 bar.style.height = "10%";
-                bar.style.backgroundColor = "var(--primarina-cyan)";
+                bar.style.backgroundColor = "var(--primarina-cyan)"; // Cor padrão das barras em repouso
             });
         }
     </script>

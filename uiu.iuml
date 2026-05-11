@@ -1,0 +1,180 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam shadowing false
+
+
+' --- ENTIDADES (Limpas e com Herança de ID) ---
+package "Entities" {
+    class Usuario {
+        - idUsuario : int
+        - nome : String
+        - email : String
+        - senha : String
+    }
+
+    class Cliente {
+        - cpf : String
+    }
+
+    class Restaurante {
+        - cnpj : String
+        - descricao : String
+        - categoria : CategoriaRestaurante
+    }
+
+    class Entregador {
+        - cnpj : String
+        - veiculo : TipoVeiculo
+    }
+
+    class Produto {
+        - idProduto : int
+        - nome : String
+        - preco : double
+    }
+
+    class Localizacao {
+        - idLocalizacao : int
+        - complemento : String
+        - bairro : String
+        - cidade : String
+        - descricao : String
+    }
+
+    class Pedido {
+        - idPedido : int
+        - status : StatusPedido
+        - total : double
+    }
+
+    class ItemPedido {
+        - idItemPedido : int
+        - quantidade : int
+        - precoUnitario : double
+    }
+}
+
+' --- GERENCIADORES (Controllers) ---
+package "Controllers (Gerenciadores)" {
+    class GerenciadorUsuario {
+        + cadastrar() : void
+        + login(email : String, senha : String) : boolean
+    }
+
+    class GerenciadorCliente {
+        + adicionarProdutoAoPedido(produto : Produto, quantidade : int) : void
+        + realizarPedido(pedido : Pedido) : void
+        + consultarHistorico(idUsuario : int) : List<Pedido>
+    }
+
+    class GerenciadorRestaurante {
+        + gerenciarCardapio(produto : Produto, acao : String) : void
+        + gerenciarProdutos() : void
+        + gerenciarClientes() : void
+        + gerenciarEntregadores() : void
+    }
+
+    class GerenciadorEntregador {
+        + aceitarPedido(idPedido : int) : void
+        + confirmarEntrega(idPedido : int) : void
+        + registrarMovimentacao(novaLocalizacao : Localizacao) : void
+    }
+
+    class GerenciadorPedido {
+        + atualizarStatus(idPedido : int, novoStatus : StatusPedido) : void
+        + calcularTotal(idPedido : int) : double
+        + calcularSubtotal(idItemPedido : int) : double
+    }
+
+    class GerenciadorLocalizacao {
+        + obterEndereco(idLocalizacao : int) : String
+        + calcularDistancia(origem : Localizacao, destino : Localizacao) : double
+    }
+}
+
+' --- BOUNDARIES (Fronteiras/Interfaces) ---
+package "Boundaries (Interfaces)" {
+    class InterfaceCliente {
+        + exibirTelaLogin() : void
+        + mostrarCardapio() : void
+        + selecionarItens() : void
+        + confirmarCompra() : void
+    }
+
+    class InterfaceRestaurante {
+        + exibirPainelPedidos() : void
+        + editarPrecos() : void
+        + confirmarProducao() : void
+        + avisarPedidoPronto() : void
+    }
+
+    class InterfaceEntregador {
+        + listarEntregasDisponiveis() : void
+        + aceitarCorrida() : void
+        + marcarComoEntregue() : void
+    }
+
+    class SistemaMapasAPI {
+        + buscarCoordenadas(endereco : String) : String
+        + calcularTempoEstimado(origem : String, destino : String) : int
+    }
+}
+
+' --- ENUMS ---
+enum StatusPedido {
+    PENDENTE
+    CONFIRMADO
+    EM_PREPARO
+    SAIU_PARA_ENTREGA
+    ENTREGUE
+    CANCELADO
+}
+
+enum TipoVeiculo {
+    MOTO
+    CARRO
+    BICICLETA
+}
+
+enum CategoriaRestaurante {
+    PIZZARIA
+    HAMBURGUERIA
+    JAPONESA
+    CHINESA
+    BRASILEIRA
+}
+
+' --- RELACIONAMENTOS ---
+Usuario <|-- Cliente
+Usuario <|-- Entregador
+Usuario <|-- Restaurante
+
+Cliente "1" -- "1" Localizacao : possui >
+Restaurante "1" -- "1" Localizacao : localizado em >
+Entregador "1" -- "1" Localizacao : posição atual >
+Pedido "1" -- "1" Localizacao : destino de entrega >
+
+Cliente "1" -- "0..*" Pedido : realiza >
+Restaurante "1" -- "0..*" Pedido : recebe >
+Restaurante "1" -- "0..*" Produto : oferece >
+Pedido "1" *-- "1..*" ItemPedido : contém >
+ItemPedido "0..*" -- "1" Produto : refere-se a >
+Entregador "0..1" -- "0..*" Pedido : transporta >
+
+' Dependências dos Gerenciadores
+GerenciadorUsuario ..> Usuario
+GerenciadorCliente ..> Cliente
+GerenciadorRestaurante ..> Restaurante
+GerenciadorEntregador ..> Entregador
+GerenciadorPedido ..> Pedido
+GerenciadorLocalizacao ..> Localizacao
+
+' Relacionamentos das Boundaries com Gerenciadores
+InterfaceCliente ..> GerenciadorCliente : usa >
+InterfaceCliente ..> GerenciadorUsuario : usa >
+InterfaceRestaurante ..> GerenciadorRestaurante : usa >
+InterfaceEntregador ..> GerenciadorEntregador : usa >
+SistemaMapasAPI  ..> GerenciadorLocalizacao : usa >
+
+@enduml
